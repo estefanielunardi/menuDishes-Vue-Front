@@ -19,6 +19,7 @@
                    :key="dish.id" 
                    :dish="dish" 
                    @onDelete="onDelete"
+                   @onEdit="onEdit"
                    />
                </tbody>
            </table>
@@ -42,6 +43,10 @@ export default {
         onDelete(id) {
             // console.log("dishes delete" + id);
             this.$emit("onDelete" , id);
+        },
+        onEdit(data) {
+            // console.log("dishes edited" + id);
+            this.$emit("onEdit" , data);
         }
     }
 };

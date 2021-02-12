@@ -6,9 +6,9 @@
       </div>
     </div>
     <div class="ui main container"></div>
-    <DishForm/>
+    <DishForm :form="form" @onFormSubmit="onFormSubmit"/>
     <Loader v-if="loader" />
-    <Dishes :dishes="dishes" @onDelete="onDelete" />
+    <Dishes :dishes="dishes" @onDelete="onDelete" @onEdit="onEdit" />
     
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
     return {
       url: "http://localhost/apiPotsman/public/api/dishes",
       dishes: [],
+      form: {plate: '', price: '', description: '', image: '', idEdit: false},
       loader: false
     };
   },
@@ -54,9 +55,52 @@ export default {
         alert(e);
       });
     },
+    createDish(data) {
+      this.loader = true;
+
+      axios.post(this.url, {
+        plate: data.plate,
+        price: data.price,
+        description: data.description,
+        image: data.image
+      }).them(() => {
+        this.getDishes();
+      }).catch(e => {
+        alert(e);
+      });
+    },
+    editDish(data) {
+      this.loader = true;
+
+      axios.put(`${this.url}/${data.id}`,{
+        plate: data.plate,
+        price: data.price,
+        description: data.description,
+        image: data.image,
+      }).then(() => {
+        this.getDishes();
+      }).catch(e => {
+        alert(e);
+      })
+    },
     onDelete(id) {
       // console.log("DishesList delete" + id);
       this.deleteDish(id);
+    },
+    onEdit(data) {
+      // console.log("DishesList edit" + data);
+      this.form = data;
+      this.form.isEdit = true;
+    },
+    onFormSubmit(data) {
+      // window.console.log("DishesList onFormSubmit", data);
+      if(data.isEdit) {
+        //call edit dish
+        this.editDish(data);
+      } else {
+        //call create dish
+        this.createDish(data);
+      }
     }
   },
 
