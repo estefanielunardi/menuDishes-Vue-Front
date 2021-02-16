@@ -1,24 +1,39 @@
-# app-food-vue
+# Vue FoodDishes-CRUD
 
-## Project setup
-```
-npm install
-```
+Part two- This would be the front, generated in Vue. Will consume the Api created in Laravel to execute the CRUD of the food dishes.
 
-### Compiles and hot-reloads for development
+Git pages link: in progress
+
+## Made By ✒️
+
+Estefanie Garcia L
+
+## Built With 🛠️
+
+[Vue] -> Vue.js is an open source JavaScript framework for building user interfaces and single page applications.
+
+### Prerequisites 📋
+
+What you need to work on my project:
+
+A code editor and a browser.
+
+### Installing 🔧
+
+Clone 'name of the repository' repository from GitHub:
+
+$ git clone https://github.com/estefanielunardi/menuDishes-Vue-Front.git
+
+## Getting Started 🚀
+
+### Compiles
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## The Learned
+The first time working on a project where the main focus was to separate the back and the front, consume api from a different repository.
 
-### Run your unit tests
-```
-npm run test:unit
-```
+## Next Steps 🖇️
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Insert images into the view form.
